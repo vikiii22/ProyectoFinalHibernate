@@ -55,7 +55,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>target/generated-sources/annotations/persistence/domain/Tramite_</source>
+                                <source>target/generated-sources/annotations/persistence/domain/Cliente_</source>
                             </sources>
                         </configuration>
                     </execution>

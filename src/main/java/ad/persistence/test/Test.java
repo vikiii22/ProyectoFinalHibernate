@@ -1,13 +1,15 @@
 package ad.persistence.test;
 
-import ad.persistence.domain.Animal;
-import ad.persistence.domain.Cliente;
-import ad.persistence.domain.Clinica_Veterinaria;
-import ad.persistence.domain.Veterinario;
+import ad.persistence.domain.*;
 import ad.persistence.util.HibernateUtil;
 import org.hibernate.Session;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Scanner;
 
 public class Test {
@@ -15,7 +17,8 @@ public class Test {
         Session session= HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Scanner sc=new Scanner(System.in);
+
+        /*Scanner sc=new Scanner(System.in);
         System.out.print("Introduce un nombre: ");
         String nombre=sc.nextLine();
         System.out.print("Introduce un número de teléfono: ");
@@ -52,11 +55,23 @@ public class Test {
             session.save(animal1);
             session.save(animal2);
 
-            session.getTransaction().commit();
+
         }catch (Exception e){
             e.printStackTrace();
+        }*/
+        CriteriaBuilder builder=session.getCriteriaBuilder();
+        CriteriaQuery<Cliente> criteria=builder.createQuery(Cliente.class);
+        Root<Cliente>root=criteria.from(Cliente.class);
+        Join<Cliente, Animal> join=root.join(Cliente_.animal);
+        criteria.select(root);
+        List<Cliente> clientes=session.createQuery(criteria).getResultList();
+        for (Cliente c:clientes) {
+            for (Animal a:c.getAnimal()) {
+                System.out.println(c.getIdCliente() + " " + c.getNombreCliente() + " " + a.getLesion());
+            }
         }
 
+        session.getTransaction().commit();
         session.close();
     }
 }
