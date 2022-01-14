@@ -15,34 +15,33 @@ public class Test {
         Session session= HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        /*Scanner sc=new Scanner(System.in);
+        Scanner sc=new Scanner(System.in);
         System.out.print("Introduce un nombre: ");
         String nombre=sc.nextLine();
-        Cliente cliente=new Cliente();
-        cliente.setNombreCliente(nombre);
         System.out.print("Introduce un número de teléfono: ");
         int num=sc.nextInt();
-        cliente.setTelefonoContacto(num);
-        System.out.println("Usuario creado");
-
-        session.save(cliente);*/
+        System.out.print("Introduce un nombre: ");
+        sc.nextLine();
+        String nombre2=sc.nextLine();
+        System.out.print("Introduce un número de teléfono: ");
+        int num2=sc.nextInt();
 
         try {
-            Cliente cliente=new Cliente("Julio", 787945412);
-            Cliente cliente1=new Cliente("Jose", 727701591);
+            Cliente cliente=new Cliente(nombre, num);
+            Cliente cliente1=new Cliente(nombre2, num2);
             session.save(cliente);
             session.save(cliente1);
 
-            Clinica_Veterinaria clinica_veterinaria=new Clinica_Veterinaria("C/La calle");
+            Clinica_Veterinaria clinica_veterinaria = new Clinica_Veterinaria("C/La Avenida", "Clínica Sonrisas");
             session.save(clinica_veterinaria);
 
-            Veterinario veterinario=new Veterinario("Ramón", "Huesos rotos");
+            Veterinario veterinario=new Veterinario("Ramón", "Huesos Rotos");
             veterinario.setClinica_veterinaria(clinica_veterinaria);
             session.save(veterinario);
 
-            Animal animal=new Animal("Infección dental");
-            Animal animal1=new Animal("Rotura");
-            Animal animal2=new Animal("Limar uñas");
+            Animal animal=new Animal("Rotura Hueso");
+            Animal animal1=new Animal("Dentadura torcida");
+            Animal animal2=new Animal("Infección Renal");
             animal.setCliente(cliente);
             animal1.setCliente(cliente);
             animal2.setCliente(cliente1);

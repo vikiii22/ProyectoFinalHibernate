@@ -10,10 +10,12 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Clinica_Veterinaria_ {
 
 	public static volatile SingularAttribute<Clinica_Veterinaria, Integer> idClinica_Veterinaria;
+	public static volatile SingularAttribute<Clinica_Veterinaria, String> NombreClinica;
 	public static volatile SingularAttribute<Clinica_Veterinaria, String> Direccion;
 	public static volatile SetAttribute<Clinica_Veterinaria, Veterinario> Veterinario;
 
 	public static final String ID_CLINICA__VETERINARIA = "idClinica_Veterinaria";
+	public static final String NOMBRE_CLINICA = "NombreClinica";
 	public static final String DIRECCION = "Direccion";
 	public static final String VETERINARIO = "Veterinario";
 

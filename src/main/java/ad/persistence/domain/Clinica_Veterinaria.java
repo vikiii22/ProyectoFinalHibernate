@@ -10,14 +10,24 @@ public class Clinica_Veterinaria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int idClinica_Veterinaria;
     String Direccion;
+    String NombreClinica;
     @OneToMany(mappedBy = "clinica_veterinaria")
     Set<Veterinario> Veterinario;
 
     public Clinica_Veterinaria() {
     }
 
-    public Clinica_Veterinaria(String direccion) {
+    public Clinica_Veterinaria(String direccion, String nombreClinica) {
         Direccion = direccion;
+        NombreClinica = nombreClinica;
+    }
+
+    public String getNombreClinica() {
+        return NombreClinica;
+    }
+
+    public void setNombreClinica(String nombreClinica) {
+        NombreClinica = nombreClinica;
     }
 
     public int getIdClinica_Veterinaria() {
