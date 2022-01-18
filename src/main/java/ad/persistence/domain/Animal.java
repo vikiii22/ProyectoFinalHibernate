@@ -54,4 +54,11 @@ public class Animal {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    @Override
+    public String toString() {
+        return "Animal " +
+                "idAnimal: " + idAnimal +
+                ", Lesion='" + Lesion;
+    }
 }

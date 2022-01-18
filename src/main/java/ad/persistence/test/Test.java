@@ -1,15 +1,10 @@
 package ad.persistence.test;
 
-import ad.persistence.domain.*;
+import ad.persistence.Service.AnimalService;
+import ad.persistence.Service.ClienteService;
 import ad.persistence.util.HibernateUtil;
 import org.hibernate.Session;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Root;
-import java.sql.Timestamp;
-import java.util.List;
 import java.util.Scanner;
 
 public class Test {
@@ -17,6 +12,22 @@ public class Test {
         Session session= HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
+        ClienteService clienteService=new ClienteService();
+        AnimalService animalService=new AnimalService();
+        Scanner sc=new Scanner(System.in);
+
+
+        /*System.out.print("Introduce tu nombre: ");
+        String nombre= sc.nextLine();
+        System.out.print("Introduce tu número de teléfono: ");
+        int num=sc.nextInt();
+        clienteService.insertarCliente(nombre, num);*/
+
+        System.out.print("Introduce tu id: ");
+        int idCliente=sc.nextInt();
+        animalService.mostrarAnimal(idCliente);
+
+        //clienteService.verDatosCliente(idCliente);
 
         /*Scanner sc=new Scanner(System.in);
         System.out.print("Introduce un nombre: ");
@@ -59,19 +70,10 @@ public class Test {
         }catch (Exception e){
             e.printStackTrace();
         }*/
-        CriteriaBuilder builder=session.getCriteriaBuilder();
-        CriteriaQuery<Cliente> criteria=builder.createQuery(Cliente.class);
-        Root<Cliente>root=criteria.from(Cliente.class);
-        Join<Cliente, Animal> join=root.join(Cliente_.animal);
-        criteria.select(root);
-        List<Cliente> clientes=session.createQuery(criteria).getResultList();
-        for (Cliente c:clientes) {
-            for (Animal a:c.getAnimal()) {
-                System.out.println(c.getIdCliente() + " " + c.getNombreCliente() + " " + a.getLesion());
-            }
-        }
 
-        session.getTransaction().commit();
-        session.close();
+
+
+        //session.getTransaction();
+        //session.close();
     }
 }

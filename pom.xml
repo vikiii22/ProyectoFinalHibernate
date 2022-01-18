@@ -56,6 +56,9 @@
                         <configuration>
                             <sources>
                                 <source>target/generated-sources/annotations/persistence/domain/Cliente_</source>
+                                <source>target/generated-sources/annotations/persistence/domain/Animal_</source>
+                                <source>target/generated-sources/annotations/persistence/domain/Clinica_Veterinaria_</source>
+                                <source>target/generated-sources/annotations/persistence/domain/Veterinario_</source>
                             </sources>
                         </configuration>
                     </execution>
