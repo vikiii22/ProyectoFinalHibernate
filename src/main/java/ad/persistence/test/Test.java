@@ -16,18 +16,30 @@ public class Test {
         AnimalService animalService=new AnimalService();
         Scanner sc=new Scanner(System.in);
 
+        System.out.println("Que deseas hacer?\n" +
+                "1: Crear un nuevo cliente\n" +
+                "2: Mostrar todos los datos de tu Animal/es\n" +
+                "3: Mostrar todos tus datos\n");
 
-        /*System.out.print("Introduce tu nombre: ");
-        String nombre= sc.nextLine();
-        System.out.print("Introduce tu número de teléfono: ");
-        int num=sc.nextInt();
-        clienteService.insertarCliente(nombre, num);*/
+        int eleccion= sc.nextInt();
 
-        System.out.print("Introduce tu id: ");
-        int idCliente=sc.nextInt();
-        animalService.mostrarAnimal(idCliente);
-
-        //clienteService.verDatosCliente(idCliente);
+        switch (eleccion){
+            case 1:
+                System.out.print("Introduce tu nombre: ");
+                String nombre= sc.nextLine();
+                System.out.print("Introduce tu número de teléfono: ");
+                int num=sc.nextInt();
+                clienteService.insertarCliente(nombre, num);
+            case 2:
+                System.out.print("Introduce tu id: ");
+                int idCliente=sc.nextInt();
+                animalService.mostrarAnimal(idCliente);
+                break;
+            case 3:
+                System.out.print("Introduce tu id: ");
+                int idCli=sc.nextInt();
+                clienteService.verDatosCliente(idCli);
+        }
 
         /*Scanner sc=new Scanner(System.in);
         System.out.print("Introduce un nombre: ");

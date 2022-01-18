@@ -59,6 +59,6 @@ public class Animal {
     public String toString() {
         return "Animal " +
                 "idAnimal: " + idAnimal +
-                ", Lesion='" + Lesion;
+                ", Lesion: " + Lesion;
     }
 }
