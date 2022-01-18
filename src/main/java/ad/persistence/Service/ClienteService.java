@@ -30,15 +30,40 @@ public class ClienteService {
         Session session= HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        CriteriaBuilder builder=session.getCriteriaBuilder();
-        CriteriaQuery<Cliente> criteria=builder.createQuery(Cliente.class);
-        Root<Cliente> root=criteria.from(Cliente.class);
-        criteria.select(root).where(builder.equal(root.get(Cliente_.ID_CLIENTE), id));
-        List<Cliente> clientes=session.createQuery(criteria).getResultList();
+        try {
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<Cliente> criteria = builder.createQuery(Cliente.class);
+            Root<Cliente> root = criteria.from(Cliente.class);
+            criteria.select(root).where(builder.equal(root.get(Cliente_.ID_CLIENTE), id));
+            List<Cliente> clientes = session.createQuery(criteria).getResultList();
 
-        clientes.forEach(System.out::println);
-
+            clientes.forEach(System.out::println);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         session.getTransaction();
         session.close();
+    }
+
+    public void eliminarCliente(int id){
+        Session session= HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        try {
+            CriteriaBuilder builder=session.getCriteriaBuilder();
+            CriteriaQuery<Cliente> criteria=builder.createQuery(Cliente.class);
+            Root<Cliente> root=criteria.from(Cliente.class);
+            criteria.where(builder.equal(root.get(Cliente_.ID_CLIENTE), id));
+            List<Cliente> clientes=session.createQuery(criteria).getResultList();
+
+            Cliente cliente=session.load(Cliente.class, id);
+
+            for (Cliente c:clientes) {
+                cliente.getAnimal().remove(c);
+                session.save(cliente);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

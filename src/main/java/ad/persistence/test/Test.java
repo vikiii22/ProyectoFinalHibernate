@@ -9,36 +9,47 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        ClienteService clienteService=new ClienteService();
-        AnimalService animalService=new AnimalService();
-        Scanner sc=new Scanner(System.in);
+        ClienteService clienteService = new ClienteService();
+        AnimalService animalService = new AnimalService();
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Que deseas hacer?\n" +
                 "1: Crear un nuevo cliente\n" +
                 "2: Mostrar todos los datos de tu Animal/es\n" +
-                "3: Mostrar todos tus datos\n");
+                "3: Mostrar todos tus datos\n" +
+                "4: Borrar tus datos\n");
 
-        int eleccion= sc.nextInt();
+        int eleccion = sc.nextInt();
 
-        switch (eleccion){
+        switch (eleccion) {
             case 1:
                 System.out.print("Introduce tu nombre: ");
-                String nombre= sc.nextLine();
+                sc.nextLine();
+                String nombre = sc.nextLine();
                 System.out.print("Introduce tu número de teléfono: ");
-                int num=sc.nextInt();
+                int num = sc.nextInt();
                 clienteService.insertarCliente(nombre, num);
             case 2:
                 System.out.print("Introduce tu id: ");
-                int idCliente=sc.nextInt();
+                int idCliente = sc.nextInt();
                 animalService.mostrarAnimal(idCliente);
                 break;
             case 3:
                 System.out.print("Introduce tu id: ");
-                int idCli=sc.nextInt();
+                int idCli = sc.nextInt();
                 clienteService.verDatosCliente(idCli);
+                break;
+            case 4:
+                System.out.print("Introduce tu id: ");
+                int idClie = sc.nextInt();
+                clienteService.eliminarCliente(idClie);
+                break;
+            default:
+                System.out.println("Opción no válida");
+                break;
         }
 
         /*Scanner sc=new Scanner(System.in);
@@ -82,7 +93,6 @@ public class Test {
         }catch (Exception e){
             e.printStackTrace();
         }*/
-
 
 
         //session.getTransaction();
