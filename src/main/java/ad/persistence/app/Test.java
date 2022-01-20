@@ -13,7 +13,7 @@ public class Test {
     public static void main(String[] args) {
         ClienteService clienteService = new ClienteService();
         AnimalService animalService = new AnimalService();
-        VeterinarioService veterinarioService=new VeterinarioService();
+        VeterinarioService veterinarioService = new VeterinarioService();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -24,7 +24,8 @@ public class Test {
                     "4: Borrar tus datos\n" +
                     "5: Ingreso animal\n" +
                     "6: Ver datos veterinario\n" +
-                    "7: Registrar nuevo veterinario\n");
+                    "7: Registrar nuevo veterinario\n" +
+                    "8: Modificar veterinario que atiende\n");
 
             int eleccion = sc.nextInt();
 
@@ -65,67 +66,28 @@ public class Test {
                 }
                 case 6 -> {
                     System.out.print("Introduce id del veterinario: ");
-                    int idVeterinario= sc.nextInt();
+                    int idVeterinario = sc.nextInt();
                     veterinarioService.visualizarVeterinario(idVeterinario);
                 }
                 case 7 -> {
                     System.out.print("Introduce el nombre del nuevo veterinario: ");
                     sc.nextLine();
-                    String nombre=sc.nextLine();
+                    String nombre = sc.nextLine();
                     System.out.print("Introduce su especialidad: ");
-                    String especialidad= sc.nextLine();
+                    String especialidad = sc.nextLine();
                     System.out.print("Introduce el id de la clínica en la que trabaja: ");
-                    int clinica= sc.nextInt();
+                    int clinica = sc.nextInt();
                     veterinarioService.altaNuevoVeterinario(nombre, especialidad, clinica);
+                }
+                case 8 -> {
+                    System.out.print("Introduce el nuevo veterinario: ");
+                    int nuevo = sc.nextInt();
+                    System.out.print("Introduce id del animal que modifica: ");
+                    int animal= sc.nextInt();
+                    animalService.modificarVeterinario(nuevo, animal);
                 }
                 default -> System.out.println("Opción no válida");
             }
         }
-
-        /*Scanner sc=new Scanner(System.in);
-        System.out.print("Introduce un nombre: ");
-        String nombre=sc.nextLine();
-        System.out.print("Introduce un número de teléfono: ");
-        int num=sc.nextInt();
-        System.out.print("Introduce un nombre: ");
-        sc.nextLine();
-        String nombre2=sc.nextLine();
-        System.out.print("Introduce un número de teléfono: ");
-        int num2=sc.nextInt();
-
-        try {
-            Cliente cliente=new Cliente(nombre, num);
-            Cliente cliente1=new Cliente(nombre2, num2);
-            session.save(cliente);
-            session.save(cliente1);
-
-            Clinica_Veterinaria clinica_veterinaria = new Clinica_Veterinaria("C/La Avenida", "Clínica Sonrisas");
-            session.save(clinica_veterinaria);
-
-            Veterinario veterinario=new Veterinario("Ramón", "Huesos Rotos");
-            veterinario.setClinica_veterinaria(clinica_veterinaria);
-            session.save(veterinario);
-
-            Animal animal=new Animal("Rotura Hueso");
-            Animal animal1=new Animal("Dentadura torcida");
-            Animal animal2=new Animal("Infección Renal");
-            animal.setCliente(cliente);
-            animal1.setCliente(cliente);
-            animal2.setCliente(cliente1);
-            animal.setVeterinario(veterinario);
-            animal1.setVeterinario(veterinario);
-            animal2.setVeterinario(veterinario);
-            session.save(animal);
-            session.save(animal1);
-            session.save(animal2);
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-
-
-        //session.getTransaction();
-        //session.close();
     }
 }
