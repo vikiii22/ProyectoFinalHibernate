@@ -67,6 +67,7 @@ public class Animal {
     public String toString() {
         return "Animal " +
                 "idAnimal: " + idAnimal +
-                ", Lesion: " + Lesion + ", Dueño: " + getCliente().getNombreCliente();
+                ", Lesion: " + Lesion + ", Dueño: " + getCliente().getNombreCliente() +
+                ", Veterinario a cargo: " + veterinario.getNombreVeterinario();
     }
 }
