@@ -2,6 +2,7 @@ package ad.persistence.Service;
 
 import ad.persistence.domain.Animal;
 import ad.persistence.domain.Animal_;
+import ad.persistence.domain.Cliente;
 import ad.persistence.util.HibernateUtil;
 import org.hibernate.Session;
 
@@ -29,5 +30,17 @@ public class AnimalService {
         }
         session.getTransaction();
         session.close();
+    }
+
+    public void crearAnimal(String lesion, int idCliente, int idVeterinario){
+        Session session= HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        try {
+            Animal animal=new Animal(lesion, idCliente, idVeterinario);
+            session.save(animal);
+            session.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

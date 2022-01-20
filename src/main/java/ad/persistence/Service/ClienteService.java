@@ -6,8 +6,10 @@ import ad.persistence.domain.Cliente;
 import ad.persistence.domain.Cliente_;
 import ad.persistence.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
@@ -26,7 +28,7 @@ public class ClienteService {
         }
     }
 
-    public void verDatosCliente(int id){
+    public void verDatosCliente(String cliente){
         Session session= HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
@@ -34,7 +36,7 @@ public class ClienteService {
             CriteriaBuilder builder = session.getCriteriaBuilder();
             CriteriaQuery<Cliente> criteria = builder.createQuery(Cliente.class);
             Root<Cliente> root = criteria.from(Cliente.class);
-            criteria.select(root).where(builder.equal(root.get(Cliente_.ID_CLIENTE), id));
+            criteria.select(root).where(builder.equal(root.get(Cliente_.NOMBRE_CLIENTE), cliente));
             List<Cliente> clientes = session.createQuery(criteria).getResultList();
 
             clientes.forEach(System.out::println);
@@ -50,18 +52,18 @@ public class ClienteService {
         session.beginTransaction();
 
         try {
+            /*String hql="Delete FROM Cliente WHERE id=?0";
+            Query q=session.createQuery(hql);
+            q.setInteger(0, id);
+            q.executeUpdate();
+            session.getTransaction().commit();*/
             CriteriaBuilder builder=session.getCriteriaBuilder();
-            CriteriaQuery<Cliente> criteria=builder.createQuery(Cliente.class);
-            Root<Cliente> root=criteria.from(Cliente.class);
-            criteria.where(builder.equal(root.get(Cliente_.ID_CLIENTE), id));
-            List<Cliente> clientes=session.createQuery(criteria).getResultList();
+            CriteriaDelete<Cliente> query=builder.createCriteriaDelete(Cliente.class);
+            Root<Cliente>root=query.from(Cliente.class);
+            query.where(builder.equal(root.get("idCliente"), id));
 
-            Cliente cliente=session.load(Cliente.class, id);
-
-            for (Cliente c:clientes) {
-                cliente.getAnimal().remove(c);
-                session.save(cliente);
-            }
+            session.createQuery(query).executeUpdate();
+            session.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();
         }

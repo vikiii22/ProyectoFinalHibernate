@@ -19,6 +19,14 @@ public class Animal {
     public Animal() {
     }
 
+    public Animal(String lesion, int idCliente, int idVeterinario) {
+        cliente=new Cliente();
+        veterinario=new Veterinario();
+        Lesion = lesion;
+        cliente.setIdCliente(idCliente);
+        veterinario.setIdVeterinario(idVeterinario);
+    }
+
     public Animal(String lesion) {
         Lesion = lesion;
     }
@@ -59,6 +67,6 @@ public class Animal {
     public String toString() {
         return "Animal " +
                 "idAnimal: " + idAnimal +
-                ", Lesion: " + Lesion;
+                ", Lesion: " + Lesion + ", Dueño: " + getCliente().getNombreCliente();
     }
 }

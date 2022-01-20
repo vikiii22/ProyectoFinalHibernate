@@ -1,4 +1,4 @@
-package ad.persistence.test;
+package ad.persistence.app;
 
 import ad.persistence.Service.AnimalService;
 import ad.persistence.Service.ClienteService;
@@ -15,41 +15,54 @@ public class Test {
         ClienteService clienteService = new ClienteService();
         AnimalService animalService = new AnimalService();
         Scanner sc = new Scanner(System.in);
+        while (true) {
 
-        System.out.println("Que deseas hacer?\n" +
-                "1: Crear un nuevo cliente\n" +
-                "2: Mostrar todos los datos de tu Animal/es\n" +
-                "3: Mostrar todos tus datos\n" +
-                "4: Borrar tus datos\n");
+            System.out.println("Que deseas hacer?\n" +
+                    "1: Crear un nuevo cliente\n" +
+                    "2: Mostrar todos los datos de tu Animal/es\n" +
+                    "3: Mostrar todos tus datos\n" +
+                    "4: Borrar tus datos\n" +
+                    "5: Ingreso animal\n");
 
-        int eleccion = sc.nextInt();
+            int eleccion = sc.nextInt();
 
-        switch (eleccion) {
-            case 1:
-                System.out.print("Introduce tu nombre: ");
-                sc.nextLine();
-                String nombre = sc.nextLine();
-                System.out.print("Introduce tu número de teléfono: ");
-                int num = sc.nextInt();
-                clienteService.insertarCliente(nombre, num);
-            case 2:
-                System.out.print("Introduce tu id: ");
-                int idCliente = sc.nextInt();
-                animalService.mostrarAnimal(idCliente);
-                break;
-            case 3:
-                System.out.print("Introduce tu id: ");
-                int idCli = sc.nextInt();
-                clienteService.verDatosCliente(idCli);
-                break;
-            case 4:
-                System.out.print("Introduce tu id: ");
-                int idClie = sc.nextInt();
-                clienteService.eliminarCliente(idClie);
-                break;
-            default:
-                System.out.println("Opción no válida");
-                break;
+            switch (eleccion) {
+                case 1 -> {
+                    System.out.print("Introduce tu nombre: ");
+                    sc.nextLine();
+                    String nombre = sc.nextLine();
+                    System.out.print("Introduce tu número de teléfono: ");
+                    int num = sc.nextInt();
+                    clienteService.insertarCliente(nombre, num);
+                }
+                case 2 -> {
+                    System.out.print("Introduce tu id: ");
+                    int idCliente = sc.nextInt();
+                    animalService.mostrarAnimal(idCliente);
+                }
+                case 3 -> {
+                    System.out.print("Introduce tu nombre: ");
+                    sc.nextLine();
+                    String cliente = sc.nextLine();
+                    clienteService.verDatosCliente(cliente);
+                }
+                case 4 -> {
+                    System.out.print("Introduce tu id: ");
+                    int idClie = sc.nextInt();
+                    clienteService.eliminarCliente(idClie);
+                }
+                case 5 -> {
+                    System.out.print("Introduce tu id: ");
+                    int idCliente= sc.nextInt();
+                    System.out.print("Introduce el id del veterinario asignado: ");
+                    int idVeterinario=sc.nextInt();
+                    System.out.print("Introduce la causa: ");
+                    sc.nextLine();
+                    String lesion= sc.nextLine();
+                    animalService.crearAnimal(lesion, idCliente, idVeterinario);
+                }
+                default -> System.out.println("Opción no válida");
+            }
         }
 
         /*Scanner sc=new Scanner(System.in);
