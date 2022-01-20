@@ -20,8 +20,8 @@ public class Animal {
     }
 
     public Animal(String lesion, int idCliente, int idVeterinario) {
-        cliente=new Cliente();
-        veterinario=new Veterinario();
+        cliente = new Cliente();
+        veterinario = new Veterinario();
         Lesion = lesion;
         cliente.setIdCliente(idCliente);
         veterinario.setIdVeterinario(idVeterinario);

@@ -52,11 +52,6 @@ public class ClienteService {
         session.beginTransaction();
 
         try {
-            /*String hql="Delete FROM Cliente WHERE id=?0";
-            Query q=session.createQuery(hql);
-            q.setInteger(0, id);
-            q.executeUpdate();
-            session.getTransaction().commit();*/
             CriteriaBuilder builder=session.getCriteriaBuilder();
             CriteriaDelete<Cliente> query=builder.createCriteriaDelete(Cliente.class);
             Root<Cliente>root=query.from(Cliente.class);

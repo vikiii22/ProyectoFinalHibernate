@@ -11,15 +11,12 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        //Session session = HibernateUtil.getSessionFactory().openSession();
-        //session.beginTransaction();
-
         ClienteService clienteService = new ClienteService();
         AnimalService animalService = new AnimalService();
         VeterinarioService veterinarioService=new VeterinarioService();
         Scanner sc = new Scanner(System.in);
-        while (true) {
 
+        while (true) {
             System.out.println("Que deseas hacer?\n" +
                     "1: Crear un nuevo cliente\n" +
                     "2: Mostrar todos los datos de tu/s Animal/es\n" +
