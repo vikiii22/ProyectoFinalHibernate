@@ -25,7 +25,8 @@ public class Test {
                     "5: Ingreso animal\n" +
                     "6: Ver datos veterinario\n" +
                     "7: Registrar nuevo veterinario\n" +
-                    "8: Modificar veterinario que atiende\n");
+                    "8: Modificar veterinario que atiende\n" +
+                    "10: Exportar datos de cliente a xml\n");
 
             int eleccion = sc.nextInt();
 
@@ -85,6 +86,12 @@ public class Test {
                     System.out.print("Introduce id del animal que modifica: ");
                     int animal= sc.nextInt();
                     animalService.modificarVeterinario(nuevo, animal);
+                }
+                case 10 -> {
+                    //System.out.print("Introduce tu nombre: ");
+                    //sc.nextLine();
+                    //String nombre= sc.nextLine();
+                    clienteService.exportarDatos();
                 }
                 default -> System.out.println("Opción no válida");
             }

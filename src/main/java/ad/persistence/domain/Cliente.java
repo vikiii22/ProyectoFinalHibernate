@@ -22,6 +22,12 @@ public class Cliente {
         TelefonoContacto = telefonoContacto;
     }
 
+    public Cliente(String nombreCliente, int idCliente, int telefonoContacto) {
+        this.NombreCliente=nombreCliente;
+        this.idCliente=idCliente;
+        this.TelefonoContacto=telefonoContacto;
+    }
+
     public Set<Animal> getAnimal() {
         return animal;
     }

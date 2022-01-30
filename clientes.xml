@@ -1,0 +1,50 @@
+<list>
+  <ad.persistence.domain.Cliente>
+    <idCliente>1</idCliente>
+    <NombreCliente>Luis</NombreCliente>
+    <TelefonoContacto>7777777</TelefonoContacto>
+    <animal class="org.hibernate.collection.internal.PersistentSet">
+      <isTempSession>false</isTempSession>
+      <initialized>false</initialized>
+      <owner class="ad.persistence.domain.Cliente" reference="../.."/>
+      <cachedSize>-1</cachedSize>
+      <role>ad.persistence.domain.Cliente.animal</role>
+      <key class="int">1</key>
+      <dirty>false</dirty>
+      <elementRemoved>false</elementRemoved>
+      <allowLoadOutsideTransaction>false</allowLoadOutsideTransaction>
+    </animal>
+  </ad.persistence.domain.Cliente>
+  <ad.persistence.domain.Cliente>
+    <idCliente>2</idCliente>
+    <NombreCliente>Mario</NombreCliente>
+    <TelefonoContacto>7777777</TelefonoContacto>
+    <animal class="org.hibernate.collection.internal.PersistentSet">
+      <isTempSession>false</isTempSession>
+      <initialized>false</initialized>
+      <owner class="ad.persistence.domain.Cliente" reference="../.."/>
+      <cachedSize>-1</cachedSize>
+      <role>ad.persistence.domain.Cliente.animal</role>
+      <key class="int">2</key>
+      <dirty>false</dirty>
+      <elementRemoved>false</elementRemoved>
+      <allowLoadOutsideTransaction>false</allowLoadOutsideTransaction>
+    </animal>
+  </ad.persistence.domain.Cliente>
+  <ad.persistence.domain.Cliente>
+    <idCliente>8</idCliente>
+    <NombreCliente>Carmele</NombreCliente>
+    <TelefonoContacto>784956123</TelefonoContacto>
+    <animal class="org.hibernate.collection.internal.PersistentSet">
+      <isTempSession>false</isTempSession>
+      <initialized>false</initialized>
+      <owner class="ad.persistence.domain.Cliente" reference="../.."/>
+      <cachedSize>-1</cachedSize>
+      <role>ad.persistence.domain.Cliente.animal</role>
+      <key class="int">8</key>
+      <dirty>false</dirty>
+      <elementRemoved>false</elementRemoved>
+      <allowLoadOutsideTransaction>false</allowLoadOutsideTransaction>
+    </animal>
+  </ad.persistence.domain.Cliente>
+</list>
