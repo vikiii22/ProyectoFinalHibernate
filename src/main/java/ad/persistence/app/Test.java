@@ -88,9 +88,6 @@ public class Test {
                     animalService.modificarVeterinario(nuevo, animal);
                 }
                 case 10 -> {
-                    //System.out.print("Introduce tu nombre: ");
-                    //sc.nextLine();
-                    //String nombre= sc.nextLine();
                     clienteService.exportarDatos();
                 }
                 default -> System.out.println("Opción no válida");
