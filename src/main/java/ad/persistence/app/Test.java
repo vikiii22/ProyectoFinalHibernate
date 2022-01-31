@@ -8,6 +8,9 @@ import ad.persistence.domain.Veterinario;
 import ad.persistence.util.HibernateUtil;
 import org.hibernate.Session;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Test {
@@ -118,6 +121,14 @@ public class Test {
                         System.out.println("Buenísimas tardes, sr Daniel, espero que pase una plácida tarde y todo sea de su agrado, posdata, eres un crack.");
                     }else {
                         System.out.println("Sin nota, día triste chicos :(");
+                    }
+
+                    try {
+                        BufferedWriter bw=new BufferedWriter(new FileWriter("notaFinal.txt"));
+                        bw.write("Nota final: " + nota);
+                        bw.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
                 default -> System.out.println("Opción no válida");
