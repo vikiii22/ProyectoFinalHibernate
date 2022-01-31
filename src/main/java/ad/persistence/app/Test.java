@@ -30,7 +30,9 @@ public class Test {
                     "8: Modificar veterinario que atiende\n" +
                     "9: Crear nueva clínica veterinaria\n" +
                     "10: Ver clínicas disponibles\n" +
-                    "11: Exportar datos de cliente a xml\n");
+                    "11: Exportar datos de cliente a xml\n" +
+                    "12: Saluda a Daniel\n");
+
 
             int eleccion = sc.nextInt();
 
@@ -104,6 +106,19 @@ public class Test {
                 }
                 case 11 -> {
                     clienteService.exportarDatos();
+                }
+                case 12 -> {
+                    System.out.print("Introduce mi nota del trabajo: ");
+                    int nota=sc.nextInt();
+                    if (nota >=1 && nota <=5){
+                        System.out.println("Hola, sin más.");
+                    }else if (nota >= 5 && nota <=8){
+                        System.out.println("Buenas tardes Daniel, que tenga un buen día.");
+                    }else if (nota <=12){
+                        System.out.println("Buenísimas tardes, sr Daniel, espero que pase una plácida tarde y todo sea de su agrado, posdata, eres un crack.");
+                    }else {
+                        System.out.println("Sin nota, día triste chicos :(");
+                    }
                 }
                 default -> System.out.println("Opción no válida");
             }
