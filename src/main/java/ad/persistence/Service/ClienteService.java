@@ -84,9 +84,7 @@ public class ClienteService {
             List<Cliente> clientes = session.createQuery(criteria).getResultList();
 
             BufferedWriter bw=new BufferedWriter(new FileWriter("clientes.xml"));
-            for (Cliente c:clientes){
-                System.out.println(c.toString());
-            }
+            System.out.println("Datos exportados");
             XStream xStream=new XStream();
             xStream.toXML(clientes, bw);
             bw.close();

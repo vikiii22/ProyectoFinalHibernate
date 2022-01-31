@@ -26,6 +26,7 @@ public class Test {
                     "6: Ver datos veterinario\n" +
                     "7: Registrar nuevo veterinario\n" +
                     "8: Modificar veterinario que atiende\n" +
+                    "9: Crear nueva clínica veterinaria\n" +
                     "10: Exportar datos de cliente a xml\n");
 
             int eleccion = sc.nextInt();
