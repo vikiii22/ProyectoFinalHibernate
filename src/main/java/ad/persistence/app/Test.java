@@ -2,6 +2,7 @@ package ad.persistence.app;
 
 import ad.persistence.Service.AnimalService;
 import ad.persistence.Service.ClienteService;
+import ad.persistence.Service.ClinicaVeterinariaService;
 import ad.persistence.Service.VeterinarioService;
 import ad.persistence.domain.Veterinario;
 import ad.persistence.util.HibernateUtil;
@@ -14,6 +15,7 @@ public class Test {
         ClienteService clienteService = new ClienteService();
         AnimalService animalService = new AnimalService();
         VeterinarioService veterinarioService = new VeterinarioService();
+        ClinicaVeterinariaService clinicaVeterinariaService=new ClinicaVeterinariaService();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -27,7 +29,8 @@ public class Test {
                     "7: Registrar nuevo veterinario\n" +
                     "8: Modificar veterinario que atiende\n" +
                     "9: Crear nueva clínica veterinaria\n" +
-                    "10: Exportar datos de cliente a xml\n");
+                    "10: Ver clínicas disponibles\n" +
+                    "11: Exportar datos de cliente a xml\n");
 
             int eleccion = sc.nextInt();
 
@@ -88,7 +91,18 @@ public class Test {
                     int animal= sc.nextInt();
                     animalService.modificarVeterinario(nuevo, animal);
                 }
+                case 9 -> {
+                    System.out.print("Introduce la dirección: ");
+                    sc.nextLine();
+                    String direccion=sc.nextLine();
+                    System.out.print("Introduce nombre de la clínica: ");
+                    String nombre=sc.nextLine();
+                    clinicaVeterinariaService.crearNuevaClinica(direccion, nombre);
+                }
                 case 10 -> {
+                    clinicaVeterinariaService.mostrarClinicasDisponibles();
+                }
+                case 11 -> {
                     clienteService.exportarDatos();
                 }
                 default -> System.out.println("Opción no válida");

@@ -53,4 +53,13 @@ public class Clinica_Veterinaria {
     public void setVeterinario(Set<ad.persistence.domain.Veterinario> veterinario) {
         Veterinario = veterinario;
     }
+
+    @Override
+    public String toString() {
+        return "Clinica_Veterinaria " +
+                "Número de clínica: " + idClinica_Veterinaria +
+                ", Dirección: " + Direccion +
+                ", Nombre de la clínica: " + NombreClinica +
+                ", Veterinario=" + getVeterinario();
+    }
 }
